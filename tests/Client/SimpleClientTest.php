@@ -1,14 +1,11 @@
 <?php
 
-namespace Dymantic\InstagramFeed\Tests\Client;
+namespace JustBetter\InstagramFeed\Tests\Client;
 
-use Dymantic\InstagramFeed\Exceptions\BadTokenException;
-use Dymantic\InstagramFeed\Exceptions\HttpException;
-use Dymantic\InstagramFeed\SimpleClient;
-use Dymantic\InstagramFeed\Tests\MockableDummyHttpClient;
-use Dymantic\InstagramFeed\Tests\TestCase;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\RequestOptions;
+use JustBetter\InstagramFeed\Exceptions\HttpException;
+use JustBetter\InstagramFeed\SimpleClient;
+use JustBetter\InstagramFeed\Tests\MockableDummyHttpClient;
+use JustBetter\InstagramFeed\Tests\TestCase;
 use Illuminate\Support\Facades\Http;
 
 class SimpleClientTest extends TestCase

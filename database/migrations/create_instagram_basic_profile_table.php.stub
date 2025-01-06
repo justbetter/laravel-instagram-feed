@@ -11,7 +11,7 @@ class CreateInstagramBasicProfileTable extends Migration
      */
     public function up()
     {
-        Schema::create('dymantic_instagram_basic_profiles', function (Blueprint $table) {
+        Schema::create('justbetter_instagram_basic_profiles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('username')->unique();
             $table->string('identity_token')->nullable();
@@ -23,6 +23,6 @@ class CreateInstagramBasicProfileTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dymantic_instagram_basic_profiles');
+        Schema::dropIfExists('justbetter_instagram_basic_profiles');
     }
 }

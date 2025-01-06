@@ -1,23 +1,21 @@
 <?php
 
 
-namespace Dymantic\InstagramFeed;
+namespace JustBetter\InstagramFeed;
 
 
-use Dymantic\InstagramFeed\Exceptions\AccessTokenRequestException;
-use Dymantic\InstagramFeed\Exceptions\RequestTokenException;
+use JustBetter\InstagramFeed\Exceptions\AccessTokenRequestException;
+use JustBetter\InstagramFeed\Exceptions\RequestTokenException;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class Profile extends Model
 {
-    const CACHE_KEY_BASE = 'dymantic_instagram_feed';
-    protected $table = 'dymantic_instagram_basic_profiles';
+    const CACHE_KEY_BASE = 'justbetter_instagram_feed';
+    protected $table = 'justbetter_instagram_basic_profiles';
 
     protected $guarded = [];
 

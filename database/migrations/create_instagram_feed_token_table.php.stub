@@ -11,7 +11,7 @@ class CreateInstagramFeedTokenTable extends Migration
      */
     public function up()
     {
-        Schema::create('dymantic_instagram_feed_tokens', function (Blueprint $table) {
+        Schema::create('justbetter_instagram_feed_tokens', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('profile_id');
             $table->string('access_code');
@@ -28,6 +28,6 @@ class CreateInstagramFeedTokenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dymantic_instagram_feed_tokens');
+        Schema::dropIfExists('justbetter_instagram_feed_tokens');
     }
 }

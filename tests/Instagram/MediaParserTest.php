@@ -1,10 +1,10 @@
 <?php
 
-namespace Dymantic\InstagramFeed\Tests\Instagram;
+namespace JustBetter\InstagramFeed\Tests\Instagram;
 
-use Dymantic\InstagramFeed\InstagramMedia;
-use Dymantic\InstagramFeed\MediaParser;
-use Dymantic\InstagramFeed\Tests\TestCase;
+use JustBetter\InstagramFeed\InstagramMedia;
+use JustBetter\InstagramFeed\MediaParser;
+use JustBetter\InstagramFeed\Tests\TestCase;
 
 class MediaParserTest extends TestCase
 {
@@ -34,7 +34,6 @@ class MediaParserTest extends TestCase
         $this->assertSame("https://www.instagram.com/p/Ab12CDeFgHi/", $media->permalink);
         $this->assertSame("", $media->timestamp);
         $this->assertCount(0, $media->children);
-
     }
 
     /**

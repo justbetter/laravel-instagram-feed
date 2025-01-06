@@ -1,8 +1,6 @@
 <?php
 
-
-namespace Dymantic\InstagramFeed\Tests;
-
+namespace JustBetter\InstagramFeed\Tests;
 
 use Illuminate\Database\Eloquent\Model;
 

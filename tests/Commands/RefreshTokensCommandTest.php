@@ -1,15 +1,15 @@
 <?php
 
 
-namespace Dymantic\InstagramFeed\Tests\Commands;
+namespace JustBetter\InstagramFeed\Tests\Commands;
 
 
-use Dymantic\InstagramFeed\AccessToken;
-use Dymantic\InstagramFeed\Instagram;
-use Dymantic\InstagramFeed\Profile;
-use Dymantic\InstagramFeed\SimpleClient;
-use Dymantic\InstagramFeed\Tests\FakesInstagramCalls;
-use Dymantic\InstagramFeed\Tests\TestCase;
+use JustBetter\InstagramFeed\AccessToken;
+use JustBetter\InstagramFeed\Instagram;
+use JustBetter\InstagramFeed\Profile;
+use JustBetter\InstagramFeed\SimpleClient;
+use JustBetter\InstagramFeed\Tests\FakesInstagramCalls;
+use JustBetter\InstagramFeed\Tests\TestCase;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Http;
 
@@ -26,12 +26,12 @@ class RefreshTokensCommandTest extends TestCase
         $tokenA = $this->makeToken($profileA);
         $tokenB = $this->makeToken($profileB);
 
-        $this->assertDatabaseHas('dymantic_instagram_feed_tokens', [
+        $this->assertDatabaseHas('justbetter_instagram_feed_tokens', [
             'profile_id' => 1,
             'access_code' => 'VALID_LONG_LIVED_TOKEN',
         ]);
 
-        $this->assertDatabaseHas('dymantic_instagram_feed_tokens', [
+        $this->assertDatabaseHas('justbetter_instagram_feed_tokens', [
             'profile_id' => 2,
             'access_code' => 'VALID_LONG_LIVED_TOKEN',
         ]);
@@ -43,12 +43,12 @@ class RefreshTokensCommandTest extends TestCase
 
         Artisan::call('instagram-feed:refresh-tokens');
 
-        $this->assertDatabaseHas('dymantic_instagram_feed_tokens', [
+        $this->assertDatabaseHas('justbetter_instagram_feed_tokens', [
             'profile_id' => 1,
             'access_code' => 'REFRESHED_LONG_LIVED_TOKEN',
         ]);
 
-        $this->assertDatabaseHas('dymantic_instagram_feed_tokens', [
+        $this->assertDatabaseHas('justbetter_instagram_feed_tokens', [
             'profile_id' => 2,
             'access_code' => 'REFRESHED_LONG_LIVED_TOKEN',
         ]);

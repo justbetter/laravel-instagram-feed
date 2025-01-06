@@ -10,7 +10,7 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Dymantic InstagramFeed Test Suite">
+        <testsuite name="JustBetter InstagramFeed Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

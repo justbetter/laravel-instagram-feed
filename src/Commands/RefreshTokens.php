@@ -1,12 +1,9 @@
 <?php
 
 
-namespace Dymantic\InstagramFeed\Commands;
+namespace JustBetter\InstagramFeed\Commands;
 
-
-use Dymantic\InstagramFeed\AccessToken;
-use Dymantic\InstagramFeed\Instagram;
-use Dymantic\InstagramFeed\Profile;
+use JustBetter\InstagramFeed\Profile;
 use Illuminate\Console\Command;
 
 class RefreshTokens extends Command

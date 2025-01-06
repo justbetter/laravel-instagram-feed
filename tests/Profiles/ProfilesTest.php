@@ -1,22 +1,18 @@
 <?php
 
-namespace Dymantic\InstagramFeed\Tests\Profiles;
+namespace JustBetter\InstagramFeed\Tests\Profiles;
 
-use Dymantic\InstagramFeed\AccessToken;
-use Dymantic\InstagramFeed\Exceptions\AccessTokenRequestException;
-use Dymantic\InstagramFeed\Exceptions\RequestTokenException;
-use Dymantic\InstagramFeed\Instagram;
-use Dymantic\InstagramFeed\InstagramFeed;
-use Dymantic\InstagramFeed\Profile;
-use Dymantic\InstagramFeed\SimpleClient;
-use Dymantic\InstagramFeed\Tests\FakesInstagramCalls;
-use Dymantic\InstagramFeed\Tests\TestCase;
+use JustBetter\InstagramFeed\AccessToken;
+use JustBetter\InstagramFeed\Exceptions\AccessTokenRequestException;
+use JustBetter\InstagramFeed\Exceptions\RequestTokenException;
+use JustBetter\InstagramFeed\Instagram;
+use JustBetter\InstagramFeed\InstagramFeed;
+use JustBetter\InstagramFeed\Profile;
+use JustBetter\InstagramFeed\Tests\FakesInstagramCalls;
+use JustBetter\InstagramFeed\Tests\TestCase;
 use Illuminate\Http\Client\Request;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
 
 class ProfilesTest extends TestCase
 {
@@ -42,7 +38,7 @@ class ProfilesTest extends TestCase
     {
         Artisan::call('instagram-feed:profile', ['username' => 'test_username']);
 
-        $this->assertDatabaseHas('dymantic_instagram_basic_profiles', ['username' => 'test_username']);
+        $this->assertDatabaseHas('justbetter_instagram_basic_profiles', ['username' => 'test_username']);
     }
 
     /**
@@ -106,7 +102,7 @@ class ProfilesTest extends TestCase
 
         $profile->requestToken($this->successAuthRequest());
 
-        $this->assertDatabaseHas('dymantic_instagram_feed_tokens', [
+        $this->assertDatabaseHas('justbetter_instagram_feed_tokens', [
             'profile_id'           => $profile->id,
             'access_code'          => 'VALID_LONG_LIVED_TOKEN',
             'username'             => 'instagram_test_username',
@@ -137,7 +133,7 @@ class ProfilesTest extends TestCase
         $profile->refreshToken();
 
 
-        $this->assertDatabaseHas('dymantic_instagram_feed_tokens', [
+        $this->assertDatabaseHas('justbetter_instagram_feed_tokens', [
             'profile_id'           => $profile->id,
             'access_code'          => 'REFRESHED_LONG_LIVED_TOKEN',
             'username'             => 'instagram_test_username',

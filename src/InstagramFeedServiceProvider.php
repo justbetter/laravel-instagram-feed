@@ -1,13 +1,12 @@
 <?php
 
 
-namespace Dymantic\InstagramFeed;
+namespace JustBetter\InstagramFeed;
 
 
-use Dymantic\InstagramFeed\Commands\CreateBasicProfile;
-use Dymantic\InstagramFeed\Commands\RefreshAuthorizedFeeds;
-use Dymantic\InstagramFeed\Commands\RefreshTokens;
-use GuzzleHttp\Client;
+use JustBetter\InstagramFeed\Commands\CreateBasicProfile;
+use JustBetter\InstagramFeed\Commands\RefreshAuthorizedFeeds;
+use JustBetter\InstagramFeed\Commands\RefreshTokens;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\App;

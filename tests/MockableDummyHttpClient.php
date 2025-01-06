@@ -1,8 +1,6 @@
 <?php
 
-
-namespace Dymantic\InstagramFeed\Tests;
-
+namespace JustBetter\InstagramFeed\Tests;
 
 class MockableDummyHttpClient
 {

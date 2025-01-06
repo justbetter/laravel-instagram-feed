@@ -1,13 +1,8 @@
 <?php
 
+namespace JustBetter\InstagramFeed;
 
-namespace Dymantic\InstagramFeed;
-
-
-use Dymantic\InstagramFeed\Exceptions\BadTokenException;
-use Dymantic\InstagramFeed\Exceptions\HttpException;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\RequestOptions;
+use JustBetter\InstagramFeed\Exceptions\HttpException;
 use Illuminate\Support\Facades\Http;
 
 class SimpleClient

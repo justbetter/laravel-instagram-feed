@@ -1,10 +1,9 @@
 <?php
 
-namespace Dymantic\InstagramFeed;
+namespace JustBetter\InstagramFeed;
 
 class InstagramMedia
 {
-
     const TYPE_IMAGE = 'image';
     const TYPE_VIDEO = 'video';
     const TYPE_CAROUSEL = 'carousel';

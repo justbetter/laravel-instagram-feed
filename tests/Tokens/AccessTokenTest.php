@@ -1,11 +1,11 @@
 <?php
 
-namespace Dymantic\InstagramFeed\Tests\Tokens;
+namespace JustBetter\InstagramFeed\Tests\Tokens;
 
-use Dymantic\InstagramFeed\AccessToken;
-use Dymantic\InstagramFeed\Profile;
-use Dymantic\InstagramFeed\Tests\FakesInstagramCalls;
-use Dymantic\InstagramFeed\Tests\TestCase;
+use JustBetter\InstagramFeed\AccessToken;
+use JustBetter\InstagramFeed\Profile;
+use JustBetter\InstagramFeed\Tests\FakesInstagramCalls;
+use JustBetter\InstagramFeed\Tests\TestCase;
 
 class AccessTokenTest extends TestCase
 {

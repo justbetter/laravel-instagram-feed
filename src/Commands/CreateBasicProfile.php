@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Dymantic\InstagramFeed\Commands;
+namespace JustBetter\InstagramFeed\Commands;
 
 
-use Dymantic\InstagramFeed\Profile;
+use JustBetter\InstagramFeed\Profile;
 use Illuminate\Console\Command;
 
 class CreateBasicProfile extends Command

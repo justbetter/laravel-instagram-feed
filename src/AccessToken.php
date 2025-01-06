@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Dymantic\InstagramFeed;
+namespace JustBetter\InstagramFeed;
 
 
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +10,7 @@ class AccessToken extends Model
 {
     protected $guarded = [];
 
-    protected $table = 'dymantic_instagram_feed_tokens';
+    protected $table = 'justbetter_instagram_feed_tokens';
 
     /**
      * @param $profile

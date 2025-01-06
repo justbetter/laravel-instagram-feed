@@ -1,8 +1,6 @@
 <?php
 
-
-namespace Dymantic\InstagramFeed;
-
+namespace JustBetter\InstagramFeed;
 
 class MediaParser
 {

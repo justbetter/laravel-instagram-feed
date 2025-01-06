@@ -1,6 +1,6 @@
 <?php
 
-namespace Dymantic\InstagramFeed;
+namespace JustBetter\InstagramFeed;
 
 use ArrayIterator;
 use Countable;

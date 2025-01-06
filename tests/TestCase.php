@@ -1,11 +1,8 @@
 <?php
 
-namespace Dymantic\InstagramFeed\Tests;
+namespace JustBetter\InstagramFeed\Tests;
 
-use Dymantic\InstagramFeed\InstagramFeedServiceProvider;
-use Illuminate\Contracts\Debug\ExceptionHandler;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Foundation\Exceptions\Handler;
+use JustBetter\InstagramFeed\InstagramFeedServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
@@ -18,8 +15,6 @@ abstract class TestCase extends Orchestra
         $this->setUpDatabase($this->app);
 
     }
-
-
 
     /**
      * @param \Illuminate\Foundation\Application $app
