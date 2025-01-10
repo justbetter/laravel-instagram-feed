@@ -86,7 +86,6 @@ class Profile extends Model
         return $this->setToken(array_merge(['access_token' => $token['access_token']], $user_details));
     }
 
-
     public function refreshToken()
     {
         $instagram = App::make(Instagram::class);
@@ -95,6 +94,15 @@ class Profile extends Model
         $this->latestToken()->update(['access_code' => $new_token['access_token']]);
     }
 
+    public function refreshMediaCount()
+    {
+        $instagram = App::make(Instagram::class);
+        $token = $this->latestToken();
+        $user_details = $instagram->fetchUserDetails($token);
+
+        $this->media_count = $user_details['media_count'] ?? 0;
+        $this->save();
+    }
 
     protected function setToken($token_details)
     {
@@ -105,7 +113,7 @@ class Profile extends Model
 
     public function hasInstagramAccess(): bool
     {
-        return !! $this->latestToken();
+        return boolval($this->latestToken());
     }
 
     public function latestToken(): ?AccessToken
@@ -148,6 +156,7 @@ class Profile extends Model
     {
         $instagram = App::make(Instagram::class);
         $new_feed = $instagram->fetchMedia($this->latestToken(), $limit);
+        $this->refreshMediaCount();
 
         Cache::forget($this->cacheKey());
         Cache::forever($this->cacheKey(), $new_feed);
@@ -160,6 +169,7 @@ class Profile extends Model
         $token = $this->tokens->first();
         return [
             'name'         => $this->username,
+            'media_count'  => $this->media_count,
             'username'     => $token->username ?? '',
             'fullname'     => $token->user_fullname ?? '',
             'avatar'       => $token->user_profile_picture ?? '',
