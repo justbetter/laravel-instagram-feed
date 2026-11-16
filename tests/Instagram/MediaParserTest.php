@@ -129,4 +129,71 @@ class MediaParserTest extends TestCase
             'id' => '17894008966462830'
         ], $media->children[2]);
     }
+
+    /**
+     *@test
+     */
+    public function it_falls_back_to_the_thumbnail_url_when_an_image_has_no_media_url()
+    {
+        $media = MediaParser::parseItem([
+            'id' => '1',
+            'media_type' => 'IMAGE',
+            'thumbnail_url' => 'https://example.com/thumb.jpg',
+            'permalink' => 'https://www.instagram.com/p/Ab12CDeFgHi/',
+        ]);
+
+        $this->assertSame('https://example.com/thumb.jpg', $media->url);
+    }
+
+    /**
+     *@test
+     */
+    public function it_falls_back_to_the_thumbnail_url_when_a_video_has_no_media_url()
+    {
+        $media = MediaParser::parseItem([
+            'id' => '2',
+            'media_type' => 'VIDEO',
+            'thumbnail_url' => 'https://example.com/thumb.jpg',
+            'permalink' => 'https://www.instagram.com/p/Ab12CDeFgHi/',
+        ]);
+
+        $this->assertSame('https://example.com/thumb.jpg', $media->url);
+        $this->assertSame('https://example.com/thumb.jpg', $media->thumbnail_url);
+    }
+
+    /**
+     *@test
+     */
+    public function it_falls_back_to_the_thumbnail_url_for_carousel_children_without_media_url()
+    {
+        $media = MediaParser::parseItem([
+            'id' => '3',
+            'media_type' => 'CAROUSEL_ALBUM',
+            'permalink' => 'https://www.instagram.com/p/Ab12CDeFgHi/',
+            'children' => ['data' => [
+                ['id' => 'a', 'media_type' => 'VIDEO', 'thumbnail_url' => 'https://example.com/a.jpg'],
+                ['id' => 'b', 'media_type' => 'IMAGE', 'media_url' => 'https://example.com/b.jpg'],
+            ]],
+        ]);
+
+        $this->assertSame('https://example.com/a.jpg', $media->url);
+        $this->assertSame('https://example.com/a.jpg', $media->children[0]['url']);
+        $this->assertSame('https://example.com/b.jpg', $media->children[1]['url']);
+    }
+
+    /**
+     *@test
+     */
+    public function it_prefers_the_media_url_over_the_thumbnail_url()
+    {
+        $media = MediaParser::parseItem([
+            'id' => '4',
+            'media_type' => 'VIDEO',
+            'media_url' => 'https://example.com/video.mp4',
+            'thumbnail_url' => 'https://example.com/thumb.jpg',
+            'permalink' => 'https://www.instagram.com/p/Ab12CDeFgHi/',
+        ]);
+
+        $this->assertSame('https://example.com/video.mp4', $media->url);
+    }
 }
