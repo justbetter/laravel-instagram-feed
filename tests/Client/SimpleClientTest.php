@@ -2,6 +2,7 @@
 
 namespace JustBetter\InstagramFeed\Tests\Client;
 
+use PHPUnit\Framework\Attributes\Test;
 use JustBetter\InstagramFeed\Exceptions\HttpException;
 use JustBetter\InstagramFeed\SimpleClient;
 use JustBetter\InstagramFeed\Tests\MockableDummyHttpClient;
@@ -10,9 +11,7 @@ use Illuminate\Support\Facades\Http;
 
 class SimpleClientTest extends TestCase
 {
-    /**
-     *@test
-     */
+    #[Test]
     public function the_client_expects_post_response_bodies_to_be_json_and_returns_parsed_json()
     {
         $expected_response_body = [
@@ -28,9 +27,7 @@ class SimpleClientTest extends TestCase
         $this->assertEquals($expected_response_body, $response);
     }
 
-    /**
-     *@test
-     */
+    #[Test]
     public function the_client_expect_get_responses_to_be_in_json_and_returns_parsed_json()
     {
         $expected_response_body = [
@@ -51,9 +48,7 @@ class SimpleClientTest extends TestCase
         $this->assertEquals($expected_response_body, $response);
     }
 
-    /**
-     *@test
-     */
+    #[Test]
     public function it_throws_an_exception_if_get_request_is_not_a_success()
     {
         Http::fake([
@@ -79,9 +74,7 @@ class SimpleClientTest extends TestCase
 
     }
 
-    /**
-     *@test
-     */
+    #[Test]
     public function it_throws_an_exception_if_post_request_is_not_a_success()
     {
         Http::fake([

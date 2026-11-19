@@ -2,6 +2,7 @@
 
 namespace JustBetter\InstagramFeed\Tests\Commands;
 
+use PHPUnit\Framework\Attributes\Test;
 use JustBetter\InstagramFeed\AccessToken;
 use JustBetter\InstagramFeed\Instagram;
 use JustBetter\InstagramFeed\Mail\FeedRefreshFailed;
@@ -15,9 +16,7 @@ use Illuminate\Support\Facades\Mail;
 class RefreshProfileFeedsTest extends TestCase
 {
     use FakesInstagramCalls;
-    /**
-     *@test
-     */
+    #[Test]
     public function calling_the_command_will_refresh_the_feeds()
     {
         $profileA = Profile::create(['username' => 'test user']);
@@ -41,9 +40,7 @@ class RefreshProfileFeedsTest extends TestCase
 
     }
 
-    /**
-     *@test
-     */
+    #[Test]
     public function non_authorized_profiles_are_not_refreshed()
     {
         $authorized_profile = Profile::create(['username' => 'test user']);
@@ -65,9 +62,7 @@ class RefreshProfileFeedsTest extends TestCase
         $this->assertFalse(cache()->has($unauthorized_profile->cacheKey()));
     }
 
-    /**
-     *@test
-     */
+    #[Test]
     public function an_email_will_be_sent_if_an_error_occurs_in_refreshing()
     {
         Mail::fake();
@@ -93,9 +88,7 @@ class RefreshProfileFeedsTest extends TestCase
         });
     }
 
-    /**
-     *@test
-     */
+    #[Test]
     public function a_profile_with_an_expired_or_invalid_token_will_have_its_token_deleted()
     {
         Mail::fake();

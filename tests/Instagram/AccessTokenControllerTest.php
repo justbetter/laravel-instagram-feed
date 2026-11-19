@@ -3,6 +3,7 @@
 
 namespace JustBetter\InstagramFeed\Tests\Instagram;
 
+use PHPUnit\Framework\Attributes\Test;
 
 use JustBetter\InstagramFeed\AccessToken;
 use JustBetter\InstagramFeed\Instagram;
@@ -17,9 +18,7 @@ use Illuminate\Support\Str;
 class AccessTokenControllerTest extends TestCase
 {
     use FakesInstagramCalls;
-    /**
-     *@test
-     */
+    #[Test]
     public function the_route_for_the_instagram_auth_flow_redirect_is_registered()
     {
         $response = $this->get(config('instagram-feed.auth_callback_route'));
@@ -27,9 +26,7 @@ class AccessTokenControllerTest extends TestCase
         $this->assertNotEquals(404, $response->getStatusCode());
     }
 
-    /**
-     *@test
-     */
+    #[Test]
     public function it_handles_a_redirect_with_a_valid_profile_id_and_code()
     {
         $this->withoutExceptionHandling();
@@ -58,9 +55,7 @@ class AccessTokenControllerTest extends TestCase
         $this->assertNull($profile->fresh()->identity_token);
     }
 
-    /**
-     *@test
-     */
+    #[Test]
     public function it_redirects_if_it_cannot_resolve_the_profile_from_the_redirect()
     {
         $this->withoutExceptionHandling();
@@ -80,9 +75,7 @@ class AccessTokenControllerTest extends TestCase
     }
 
 
-    /**
-     *@test
-     */
+    #[Test]
     public function it_redirects_if_it_fails_to_get_request_token()
     {
         $this->withoutExceptionHandling();
@@ -105,9 +98,7 @@ class AccessTokenControllerTest extends TestCase
         $this->assertCount(0, AccessToken::all());
     }
 
-    /**
-     *@test
-     */
+    #[Test]
     public function it_redirects_if_it_fails_to_get_an_access_token()
     {
         $this->withoutExceptionHandling();

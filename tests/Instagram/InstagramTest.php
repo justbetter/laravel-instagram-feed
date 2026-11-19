@@ -2,6 +2,7 @@
 
 namespace JustBetter\InstagramFeed\Tests\Instagram;
 
+use PHPUnit\Framework\Attributes\Test;
 use JustBetter\InstagramFeed\AccessToken;
 use JustBetter\InstagramFeed\Exceptions\BadTokenException;
 use JustBetter\InstagramFeed\Instagram;
@@ -31,9 +32,7 @@ class InstagramTest extends TestCase
         ]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_can_provide_a_auth_url_for_a_given_profile()
     {
         $profile = Profile::create(['username' => 'test_user']);
@@ -50,9 +49,7 @@ class InstagramTest extends TestCase
         $this->assertEquals($expected, $uri);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function profile_auth_url_uses_config_base_url_if_present()
     {
         $profile = Profile::create(['username' => 'test_user']);
@@ -72,9 +69,7 @@ class InstagramTest extends TestCase
     }
 
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_makes_a_request_for_a_token_for_a_given_profile_after_a_successful_auth_request()
     {
         $profile = Profile::create(['username' => 'test_user']);
@@ -92,9 +87,7 @@ class InstagramTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_gets_user_details_from_short_lived_token()
     {
         $profile = Profile::create(['username' => 'test_user']);
@@ -112,9 +105,7 @@ class InstagramTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_can_exchange_a_short_lived_token_for_a_long_lived_token()
     {
         $profile = Profile::create(['username' => 'test_user']);
@@ -133,9 +124,7 @@ class InstagramTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_can_refresh_a_long_lived_token()
     {
         $url = "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=VALID_LONG_LIVED_TOKEN";
@@ -152,9 +141,7 @@ class InstagramTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_can_fetch_media_for_a_given_access_token()
     {
         $profile = Profile::create(['username' => 'test user']);
@@ -190,9 +177,7 @@ class InstagramTest extends TestCase
         $this->assertSame($feed[3]->id, $expected_ids[3]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_makes_multiple_calls_to_fetch_up_to_limit()
     {
         $profile = Profile::create(['username' => 'test user']);
@@ -223,9 +208,7 @@ class InstagramTest extends TestCase
         $this->assertCount(7, $feed);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_ignores_video_posts_if_required_in_config()
     {
         $token = AccessToken::create([
@@ -262,9 +245,7 @@ class InstagramTest extends TestCase
         $this->assertSame($expected_ids[2], $feed[2]->id);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function it_can_detect_bad_token_requests_and_throw_a_useful_exception()
     {
         $token = AccessToken::create([

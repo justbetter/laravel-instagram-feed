@@ -2,15 +2,14 @@
 
 namespace JustBetter\InstagramFeed\Tests\Instagram;
 
+use PHPUnit\Framework\Attributes\Test;
 use JustBetter\InstagramFeed\InstagramMedia;
 use JustBetter\InstagramFeed\MediaParser;
 use JustBetter\InstagramFeed\Tests\TestCase;
 
 class MediaParserTest extends TestCase
 {
-    /**
-     *@test
-     */
+    #[Test]
     public function it_parses_an_image_correctly()
     {
         $json = '{
@@ -36,9 +35,7 @@ class MediaParserTest extends TestCase
         $this->assertCount(0, $media->children);
     }
 
-    /**
-     *@test
-     */
+    #[Test]
     public function it_parses_a_video_correctly()
     {
         $json = '{
@@ -66,9 +63,22 @@ class MediaParserTest extends TestCase
         $this->assertCount(0, $media->children);
     }
 
-    /**
-     *@test
-     */
+    #[Test]
+    public function it_parses_a_video_without_media_url()
+    {
+        $media = MediaParser::parseItem([
+            'id' => '18033634498224799',
+            'media_type' => 'VIDEO',
+            'thumbnail_url' => 'https://scontent.xx.fbcdn.net/thumbnail.jpg',
+            'permalink' => 'https://www.instagram.com/reel/Ab12CDeFgHi/',
+        ]);
+
+        $this->assertTrue($media->isVideo());
+        $this->assertSame('', $media->url);
+        $this->assertSame('https://scontent.xx.fbcdn.net/thumbnail.jpg', $media->thumbnail_url);
+    }
+
+    #[Test]
     public function it_parses_a_carousel_item_correctly()
     {
         $json = '{

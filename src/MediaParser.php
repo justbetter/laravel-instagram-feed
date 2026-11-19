@@ -17,7 +17,7 @@ class MediaParser
     private static function parseAsImage($media): ?InstagramMedia
     {
         return InstagramMedia::newImage([
-            'url'       => $media['media_url'],
+            'url'       => $media['media_url'] ?? null,
             'id'        => $media['id'],
             'caption'   => $media['caption'] ?? '',
             'permalink' => $media['permalink'],
@@ -32,12 +32,12 @@ class MediaParser
         }
 
         return InstagramMedia::newVideo([
-            'url'           => $media['media_url'],
+            'url'           => $media['media_url'] ?? null,
             'id'            => $media['id'],
             'caption'       => $media['caption'] ?? '',
             'permalink'     => $media['permalink'],
             'timestamp'     => $media['timestamp'] ?? '',
-            'thumbnail_url' => $media['thumbnail_url'],
+            'thumbnail_url' => $media['thumbnail_url'] ?? null,
         ]);
     }
 
@@ -56,7 +56,7 @@ class MediaParser
 
         return InstagramMedia::newCarousel([
             'type'      => strtolower($use['media_type']),
-            'url'       => $use['media_url'],
+            'url'       => $use['media_url'] ?? null,
             'id'        => $media['id'],
             'caption'   => $media['caption'] ?? '',
             'permalink' => $media['permalink'],
@@ -64,7 +64,7 @@ class MediaParser
             'children'  => $children->map(function ($child) {
                 return [
                     'type' => strtolower($child['media_type']),
-                    'url'  => $child['media_url'],
+                    'url'  => $child['media_url'] ?? '',
                     'id'   => $child['id'],
                 ];
             })->values()->all(),

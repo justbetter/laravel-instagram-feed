@@ -2,6 +2,7 @@
 
 namespace JustBetter\InstagramFeed\Tests\Tokens;
 
+use PHPUnit\Framework\Attributes\Test;
 use JustBetter\InstagramFeed\AccessToken;
 use JustBetter\InstagramFeed\Profile;
 use JustBetter\InstagramFeed\Tests\FakesInstagramCalls;
@@ -10,9 +11,7 @@ use JustBetter\InstagramFeed\Tests\TestCase;
 class AccessTokenTest extends TestCase
 {
     use FakesInstagramCalls;
-    /**
-     *@test
-     */
+    #[Test]
     public function a_token_can_be_created_from_an_instagram_response_array()
     {
         $profile = Profile::create(['username' => 'test user']);

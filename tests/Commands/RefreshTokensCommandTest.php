@@ -3,6 +3,7 @@
 
 namespace JustBetter\InstagramFeed\Tests\Commands;
 
+use PHPUnit\Framework\Attributes\Test;
 
 use JustBetter\InstagramFeed\AccessToken;
 use JustBetter\InstagramFeed\Instagram;
@@ -16,9 +17,7 @@ use Illuminate\Support\Facades\Http;
 class RefreshTokensCommandTest extends TestCase
 {
     use FakesInstagramCalls;
-    /**
-     * @test
-     */
+    #[Test]
     public function tokens_get_refreshed()
     {
         $profileA = Profile::create(['username' => 'testA']);

@@ -2,6 +2,7 @@
 
 namespace JustBetter\InstagramFeed\Tests\Instagram;
 
+use PHPUnit\Framework\Attributes\Test;
 use JustBetter\InstagramFeed\AccessToken;
 use JustBetter\InstagramFeed\InstagramFeed;
 use JustBetter\InstagramFeed\InstagramMedia;
@@ -12,9 +13,7 @@ use Illuminate\Support\Facades\Http;
 
 class InstagramFeedTest extends TestCase
 {
-    /**
-     * @test
-     */
+    #[Test]
     public function can_get_the_feed_for_a_profile()
     {
 
@@ -29,9 +28,7 @@ class InstagramFeedTest extends TestCase
         }
     }
 
-    /**
-     *@test
-     */
+    #[Test]
     public function the_profile_is_available_from_the_feed()
     {
         $profile = $this->setUpTestProfileWithFeed('test user');
@@ -41,9 +38,7 @@ class InstagramFeedTest extends TestCase
         $this->assertTrue($feed->profile->is($profile));
     }
 
-    /**
-     *@test
-     */
+    #[Test]
     public function the_required_limit_for_the_feed_can_be_used()
     {
         $this->setUpTestProfileWithFeed('test user');
@@ -54,9 +49,7 @@ class InstagramFeedTest extends TestCase
     }
 
 
-    /**
-     *@test
-     */
+    #[Test]
     public function can_use_profile_directly_to_get_feed()
     {
         $profile = $this->setUpTestProfileWithFeed('test user');
@@ -66,9 +59,7 @@ class InstagramFeedTest extends TestCase
         $this->assertCount(4, $feed);
     }
 
-    /**
-     *@test
-     */
+    #[Test]
     public function feed_can_be_refreshed()
     {
         $profile = $this->setUpTestProfileWithFeed('test user');
@@ -88,9 +79,7 @@ class InstagramFeedTest extends TestCase
         }
     }
 
-    /**
-     *@test
-     */
+    #[Test]
     public function the_feed_can_be_accessed_as_a_collection()
     {
         $this->setUpTestProfileWithFeed('test user');
